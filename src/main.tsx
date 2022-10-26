@@ -6,8 +6,9 @@ import App from "./App";
 import ThemeLayout from "./Layouts/ThemeLayout";
 
 const client = new ApolloClient({
-  // uri: "https://djangogql.vercel.app",
-  uri: "http://127.0.0.1:8000",
+  uri: import.meta.env.PROD
+    ? "https://djangogql.vercel.app"
+    : "http://127.0.0.1:8000",
   cache: new InMemoryCache(),
 });
 
