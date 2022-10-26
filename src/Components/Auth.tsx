@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, Fragment, SetStateAction, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SIGN_IN, SIGN_UP } from "../Configs/Mutations/auth";
 import RenderError from "./Shared/RenderError";
@@ -129,38 +129,77 @@ const Auth: FC<iProps> = ({ open, setOpen }) => {
             )}
           />
           {newUser ? (
-            <Controller
-              name="password1"
-              control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: "Password is required",
-                },
-              }}
-              defaultValue=""
-              render={({ field, fieldState: { error } }) => (
-                <TextField
-                  fullWidth
-                  size="small"
-                  label="Your Password"
-                  error={
-                    Boolean(error) ||
-                    Boolean(
-                      (authError as any)?.graphQLErrors[0]?.extensions?.fields
-                        ?.password1
-                    )
-                  }
-                  helperText={
-                    (error || authError) &&
-                    ((error?.message as string) ||
-                      (authError as any)?.graphQLErrors[0]?.extensions?.fields
-                        ?.password1)
-                  }
-                  {...field}
-                />
-              )}
-            />
+            <Fragment>
+              <Controller
+                name="password1"
+                control={control}
+                rules={{
+                  required: {
+                    value: true,
+                    message: "Password is required",
+                  },
+                }}
+                defaultValue=""
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="Your Password"
+                    error={
+                      Boolean(error) ||
+                      Boolean(
+                        (authError as any)?.graphQLErrors[0]?.extensions?.fields
+                          ?.password1
+                      )
+                    }
+                    helperText={
+                      (error || authError) &&
+                      ((error?.message as string) ||
+                        (authError as any)?.graphQLErrors[0]?.extensions?.fields
+                          ?.password1)
+                    }
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="password2"
+                control={control}
+                rules={{
+                  required: {
+                    value: true,
+                    message: "password2 is required",
+                  },
+                  validate: (val: string) => {
+                    if (watch("password1") != val) {
+                      return "Your passwords do no match";
+                    }
+                  },
+                }}
+                defaultValue=""
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="Your password2"
+                    error={
+                      Boolean(error) ||
+                      Boolean(
+                        (authError as any)?.graphQLErrors[0]?.extensions?.fields
+                          ?.password2
+                      )
+                    }
+                    helperText={
+                      (error || authError) &&
+                      ((error?.message as string) ||
+                        (authError as any)?.graphQLErrors[0]?.extensions?.fields
+                          ?.password2)
+                    }
+                    {...field}
+                  />
+                )}
+              />
+            </Fragment>
           ) : (
             <Controller
               name="password"
@@ -189,45 +228,6 @@ const Auth: FC<iProps> = ({ open, setOpen }) => {
                     ((error?.message as string) ||
                       (authError as any)?.graphQLErrors[0]?.extensions?.fields
                         ?.password)
-                  }
-                  {...field}
-                />
-              )}
-            />
-          )}
-          {newUser && (
-            <Controller
-              name="password2"
-              control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: "password2 is required",
-                },
-                validate: (val: string) => {
-                  if (watch("password1") != val) {
-                    return "Your passwords do no match";
-                  }
-                },
-              }}
-              defaultValue=""
-              render={({ field, fieldState: { error } }) => (
-                <TextField
-                  fullWidth
-                  size="small"
-                  label="Your password2"
-                  error={
-                    Boolean(error) ||
-                    Boolean(
-                      (authError as any)?.graphQLErrors[0]?.extensions?.fields
-                        ?.password2
-                    )
-                  }
-                  helperText={
-                    (error || authError) &&
-                    ((error?.message as string) ||
-                      (authError as any)?.graphQLErrors[0]?.extensions?.fields
-                        ?.password2)
                   }
                   {...field}
                 />
