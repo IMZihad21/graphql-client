@@ -1,9 +1,10 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Auth from "../Auth";
 
 const Navbar = () => {
-  const [authModal, setAuthModal] = useState<Boolean>(false);
+  const [authModal, setAuthModal] = useState<boolean>(false);
 
   return (
     <AppBar position="static" sx={{ bgcolor: "#ffffff", boxShadow: "none" }}>
@@ -41,6 +42,7 @@ const Navbar = () => {
           </Button>
         </Box>
       </Toolbar>
+      {authModal && <Auth open={authModal} setOpen={setAuthModal} />}
     </AppBar>
   );
 };

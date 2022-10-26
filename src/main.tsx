@@ -10,6 +10,7 @@ const client = new ApolloClient({
     ? "https://djangogql.vercel.app"
     : "http://127.0.0.1:8000",
   cache: new InMemoryCache(),
+  credentials: "include",
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

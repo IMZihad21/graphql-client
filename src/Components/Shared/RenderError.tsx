@@ -11,7 +11,12 @@ interface iProps {
 const RenderError: FC<iProps> = ({ error }) => {
   return (
     <Container>
-      <Alert severity="error">
+      <Alert
+        severity="error"
+        sx={{
+          width: 1,
+        }}
+      >
         {error?.graphQLErrors?.map((error) => (
           <Typography
             variant="subtitle2"
