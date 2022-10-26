@@ -1,11 +1,11 @@
 import { Box, CircularProgress } from "@mui/material";
 import { FC } from "react";
 
-interface LoaderProps {
+interface iProps {
   fullPage?: boolean;
 }
 
-const Loader: FC<LoaderProps> = ({ fullPage }) => {
+const Loader: FC<iProps> = ({ fullPage }) => {
   const loaderStyle = {
     width: fullPage ? "100vw" : "100%",
     height: fullPage ? "100vh" : "100%",

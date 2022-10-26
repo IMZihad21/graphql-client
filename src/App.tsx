@@ -1,6 +1,7 @@
 import "@fontsource/poppins";
 import { Suspense } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
+import Blog from "./Components/Blog/Blog";
 import Loader from "./Components/Shared/Loader";
 import MainLayout from "./Layouts/MainLayout";
 import Home from "./Pages/Home";
@@ -14,6 +15,10 @@ function App() {
         {
           path: "",
           element: <Home />,
+        },
+        {
+          path: "blog/:blogSlug",
+          element: <Blog />,
         },
       ],
     },
