@@ -2,7 +2,7 @@ import "@fontsource/poppins";
 import { Box } from "@mui/material";
 
 function App() {
-  return <Box>sdvfd</Box>;
+  return <Box></Box>;
 }
 
 export default App;
