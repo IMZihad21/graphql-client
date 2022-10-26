@@ -14,7 +14,7 @@ const Home = () => {
         <Grid container spacing={2}>
           {data?.allBlogs?.map((blog: BlogProps, index: number) => (
             <Grid item xs={12} md={6} key={`homeBlog${index}`}>
-              <ListBlog data={blog} />
+              <ListBlog blog={blog} />
             </Grid>
           ))}
         </Grid>
