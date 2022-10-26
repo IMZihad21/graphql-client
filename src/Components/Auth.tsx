@@ -67,34 +67,34 @@ const Auth: FC<iProps> = ({ open, setOpen }) => {
           }}
         >
           {newUser && (
-            <Controller
-              name="firstName"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  size="small"
-                  label="Your First Name"
-                  {...field}
-                />
-              )}
-            />
-          )}
-          {newUser && (
-            <Controller
-              name="lastName"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  size="small"
-                  label="Your Last Name"
-                  {...field}
-                />
-              )}
-            />
+            <Fragment>
+              <Controller
+                name="firstName"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="Your First Name"
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="lastName"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="Your Last Name"
+                    {...field}
+                  />
+                )}
+              />
+            </Fragment>
           )}
           <Controller
             name="email"
