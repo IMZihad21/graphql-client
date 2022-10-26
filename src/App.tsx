@@ -1,5 +1,8 @@
+import "@fontsource/poppins";
+import { Box } from "@mui/material";
+
 function App() {
-  return <div></div>;
+  return <Box>sdvfd</Box>;
 }
 
 export default App;
