@@ -2,9 +2,9 @@ import { useQuery } from "@apollo/client";
 import { Box, Container, Divider, Typography } from "@mui/material";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { GET_BLOG } from "../../Configs/Queries/blog";
-import Loader from "../Shared/Loader";
-import RenderError from "../Shared/RenderError";
+import { GET_BLOG } from "../Configs/Queries/blog";
+import Loader from "./Shared/Loader";
+import RenderError from "./Shared/RenderError";
 
 const Blog: FC = () => {
   const { blogSlug } = useParams();
